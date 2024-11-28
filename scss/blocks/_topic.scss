@@ -1,0 +1,110 @@
+.topic {
+    padding: 30px 0;
+    border-top: 1px solid #ececf1;
+    border-bottom: 1px solid #ececf1;
+
+    @include tablet {
+        padding: 17px 0;
+    }
+
+    @include mobile {
+        padding: 15px 0;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 1;
+        color: #000;
+
+        @include mobile {
+            font-size: 18px;
+        }
+    }
+    &__btn {
+        // ширина 100% для растягивания кнопки
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // для безопасности чтобы текст если будет большой не прилипал к +
+        column-gap: 30px;
+
+        // работает для ховер эффекта, но не для фокуса
+        &:hover:not(:focus-visible) {
+            opacity: 0.5;
+        }
+
+        &:active:not(:focus-visible) .topic__title {
+            color: #00ae6c;
+        }
+
+        // сбрасываем синюю обводку
+        &:focus {
+            outline: none;
+        }
+
+        // обводка только во время перемещения с помощью tab
+        &:focus-visible {
+            outline-offset: 1px;
+            outline: #005fcc auto 1px;
+        }
+    }
+    &__icon {
+        @include mobile {
+            width: 32px;
+            height: 32px;
+        }
+    }
+    &__content {
+        // padding-top: 30px;
+        line-height: 1.5;
+
+        // свойства для отображения текста плавно. Убираем высоту, и скрываем все наложения текста которые могут быть. Высоту открытия настраиваем через код topic.js
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.4s ease-in;
+
+        @include mobile {
+            font-size: 14px;
+            padding-top: 13px;
+        }
+
+        &-padding {
+            // расстоляние между абзацами если их будет юльше одного
+            display: flex;
+            flex-direction: column;
+            row-gap: 1em;
+
+            // падинг от параграфа до заголовка при открытом аккордионе
+            padding-top: 30px;
+        }
+    }
+}
+
+.topic + .topic {
+    // нужно для того чтобы бордеры не накладывадись пос второго топика. Подмнимаем на пиксель и верхний блок перекрывает бордер
+    margin-top: -1px;
+}
+
+/** v1 вариант, когда блоки открывались резко */
+//         &__content {
+//         padding-top: 30px;
+//         line-height: 1.5;
+
+//         // расстоляние между абзацами еси ух будет юльше одного
+//         // скрываем когда аккордион не нажат
+//         display: none;
+//         flex-direction: column;
+//         row-gap: 1em;
+
+//         @include mobile {
+//             font-size: 14px;
+//             padding-top: 13px;
+//         }
+//     }
+
+// .topic--open .topic__content {
+//     // добавленный 2 класс показывает текст
+//     display: flex;
+// }

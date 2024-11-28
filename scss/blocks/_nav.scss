@@ -1,0 +1,25 @@
+.nav {
+    font-size: 14px;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        column-gap: 40px;
+
+        @include tablet {
+            column-gap: 20px;
+        }
+    }
+
+    // &__item {
+    // }
+
+    &__link {
+        color: #000;
+        transition: color 0.2s ease-in;
+
+        &:hover {
+            color: #00ae6c;
+        }
+    }
+}

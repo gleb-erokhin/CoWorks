@@ -1,0 +1,20 @@
+.slider {
+    img {
+        border-radius: 8px;
+        object-fit: cover;
+
+        // отменяем настройки reset.css чтобы они не ломали картинки. без этих данных СЛАЙДЕР не понимает какая ширина у картинок
+        max-width: unset !important;
+        height: unset !important;
+        height: 400px !important;
+
+        @include mobile {
+        height: 250px !important;
+        }
+    }
+}
+
+// ставил 1 слайдеру отступ 15 пикс. а все остальные идут без левого отступа
+.slider > div:first-child {
+    padding-left: 15px;
+}
